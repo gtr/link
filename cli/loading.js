@@ -6,7 +6,7 @@ var loading = blessed.box({
     left: 'center',
     width: '50%',
     height: '20%',
-    content: 'Connecting to... {bold}http://localhost:4000{/bold}!',
+    content: '{bold}Connecting to... http://localhost:4000{/bold}!',
     tags: true,
     border: {
         type: 'line'
