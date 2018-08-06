@@ -22,7 +22,6 @@ socket.on('connect', function() {
     console.log('made socket connection')
     screen.title = 'ultra chat';
 
-    userJoin();
     screen.append(loading);
     screen.append(body);
     screen.append(input);
