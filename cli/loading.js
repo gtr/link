@@ -23,4 +23,5 @@ var loading = blessed.box({
     }
 });
 
+// for use in index.js
 module.exports = loading;

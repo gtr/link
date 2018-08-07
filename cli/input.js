@@ -21,4 +21,5 @@ var input = blessed.textbox({
 //     return process.exit(0);
 // });
 
+// for use in index.js
 module.exports = input;
