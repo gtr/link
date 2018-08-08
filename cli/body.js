@@ -15,5 +15,17 @@ var body = blessed.box({
     }
 });
 
+let self = {
+    body: body,
+    screen: null,
+    newUserMessage: function(){ 
+        body.content = `{center} new user (ctrl-c to exit){/center}`;
+        self.screen.render();
+    },
+    message: function(message) {
+        body.pushLine(message)
+    }
+}
+
 // for use in index.js
 module.exports = body;
