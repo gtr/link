@@ -6,13 +6,20 @@ var blessed = require('blessed');
 var screen = require('./cli/screen.js');
 var input = require('./cli/input.js');
 var body = require('./cli/body.js');
+//var notification = require('./cli/notification.js');
 
 // socket setup
 var socket = io('http://localhost:4000');
 
 // log function
-const log = (text) => {
+const log = function (text) {
     body.pushLine(text);
+    screen.render();
+}
+
+// notification function
+const nofity = function (text) {
+    notification.pushLine(text);
     screen.render();
 }
 
@@ -20,19 +27,11 @@ const log = (text) => {
 var enterHandle = blessed.form({
     parent: screen,
     width: '90%',
+    height: 10,
     left: 'center',
     keys: true,
+    content: 'enter handle',
     vi: true
-});
-
-var label1 = blessed.text({
-    parent: screen,
-    top: 0,
-    left: 'center',
-    content: 'FIRST NAME:',
-    style: {
-        fg: 'white'
-    }
 });
 
 // create handle textbox
@@ -76,49 +75,48 @@ var enter = blessed.button({
     }
 });
 
-// display notification from server
-var notification = blessed.message({
-    parent: screen,
-    top: 40,
-    left: 5,
-    style: {
-        italic: true,
-        fg: 'green'
-    }
-});
-
 // handle events
 enter.on('press', function () {
     enterHandle.submit();
 });
 
+// handle submit
 enterHandle.on('submit', function (data) {
     handle = data.handle;
+    id = socket.io.engine.id
     socket.emit('submitHandle', {
-        handle: handle
+        handle: handle,
+        id: id
     });
-    socket.emit('enterChat', handle);
 });
 
-// when connected...
+// when user already exists
+socket.on('failed', function() {
+    enterHandle.content = 'That handle already exists. Please choose another handle.'
+    screen.render();
+})
+    
+
+// when connected for the first time
 socket.on('connect', function() {
     screen.title = 'ultra chat';
-    screen.append(label1);
     screen.append(enterHandle);
     screen.render();
 });
 
+// when the server authorizes the client to enter the chat
 socket.on('enterChat', function() {
     screen.append(body);
     screen.append(input);
+
     // Handle submitting data
     input.on('submit', function(text) {
-        //log(text);
         input.clearValue();
         socket.emit('chat', {
             handle: handle,
             message: text
         })
+        input.focus();
     });
     screen.render();
     screen.key('enter', function(ch, key) {
@@ -127,12 +125,13 @@ socket.on('enterChat', function() {
     input.focus();
 });
 
-// on chat message...
+// on chat message
 socket.on('chat', function(data){
-    log(data.handle, data.message);
+    totalMessage = data.handle + ": " + data.message
+    log(totalMessage);
 });
 
-// on new user...
+// on new user
 socket.on('newUser', function(data) {
     log(data.caption);
 });
