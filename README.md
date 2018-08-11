@@ -2,6 +2,8 @@
 
 :speech_balloon: A command-line chat application written in node.js and socket.io
 
+![ultra-chat](assets/ultra-chat.gif)
+
 ### Installation
 1. Clone the repository
     ```bash
@@ -11,7 +13,7 @@
     ```bash
     node server.js
     ```
-3. Start the application
+3. On another terminal, start the application
     ```bash
     node index.js
     ```
