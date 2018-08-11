@@ -59,6 +59,10 @@ io.on('connection', function(socket){
 });
 
 // listen for requests on port 4000
-http.listen(4000, function() {
+http.listen(4000, '0.0.0.0', function() {
     console.log('listening on port 4000');
 });
+
+// app.listen(3000, '0.0.0.0', function () {
+//     console.log('Listening to port:  ' + 3000);
+// });
