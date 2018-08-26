@@ -8,7 +8,7 @@ var io = require('socket.io')(http);
 var handlesArray = ["admin"];
 
 // on connection...
-io.on('connection', function(socket){
+io.on('connection', function (socket){
     console.log('user connected')
     
     // on submitted handle
@@ -16,7 +16,7 @@ io.on('connection', function(socket){
         handle = data.handle
         id = data.id
         var exists = false;
-        handlesArray.forEach(function(item) {
+        handlesArray.forEach(function (item) {
             if (item == handle) {
                 exists = true
             };
@@ -32,7 +32,7 @@ io.on('connection', function(socket){
     })
     
     // on new user
-    socket.on('newUser', function(data) {
+    socket.on('newUser', function (data) {
         io.sockets.emit('newUser', data);
     })
     
@@ -46,11 +46,15 @@ io.on('connection', function(socket){
     
     // on disconnected user
     socket.on('disconnect', function () {
+        handlesArray = handlesArray.filter(function (item) {
+            return item !== handle
+        });
         console.log('user disconnected', handle)
+        console.log('current users:', handlesArray)
     });
     
     // on chat connection
-    socket.on('chat', function(data) {
+    socket.on('chat', function (data) {
         message = data.message;
         handle = data.handle;
         io.sockets.emit('chat', data);
@@ -59,10 +63,6 @@ io.on('connection', function(socket){
 });
 
 // listen for requests on port 4000
-http.listen(4000, '0.0.0.0', function() {
+http.listen(4000, '0.0.0.0', function () {
     console.log('listening on port 4000');
 });
-
-// app.listen(3000, '0.0.0.0', function () {
-//     console.log('Listening to port:  ' + 3000);
-// });

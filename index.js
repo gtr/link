@@ -6,7 +6,6 @@ var blessed = require('blessed');
 var screen = require('./cli/screen.js');
 var input = require('./cli/input.js');
 var body = require('./cli/body.js');
-//var notification = require('./cli/notification.js');
 
 // socket setup
 var socket = io('http://localhost:4000');
@@ -14,12 +13,6 @@ var socket = io('http://localhost:4000');
 // log function
 const log = function (text) {
     body.pushLine(text);
-    screen.render();
-}
-
-// notification function
-const nofity = function (text) {
-    notification.pushLine(text);
     screen.render();
 }
 
@@ -136,8 +129,7 @@ socket.on('newUser', function(data) {
     log(data.caption);
 });
 
-
-// Quit on Escape, q, or Control-C.
+// quit on esc, q, or ctrl-C.
 screen.key(['escape', 'q', 'C-c'], function(ch, key) {
     return process.exit(0);
 });
