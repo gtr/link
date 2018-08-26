@@ -9,16 +9,23 @@
     ```bash
     git clone https://github.com/gerardo-torres/ultra-chat.git
     ```
-2. Start the server
+2. Navigate to directory
+    ```bash
+    cd ultra-chat
+    ```
+3. Start the server
     ```bash
     node server.js
     ```
-3. On another terminal, start the application
+4. On another terminal, navigate to the directory and start the application
+    ```bash
+    cd ultra-chat
+    ```
     ```bash
     node index.js
     ```
 
 ### Dependencies
-- socket.io
-- express
-- blessed
+- socket.io: websocket library
+- express: backend server
+- blessed: frontend CLI
