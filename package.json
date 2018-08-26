@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/gerardo-torres/ultra-chat#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "blessed": "^0.1.81",
+    "express": "^4.16.3",
+    "socket.io": "^2.1.1"
   }
 }
