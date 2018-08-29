@@ -69,6 +69,14 @@ var enter = blessed.button({
     }
 });
 
+// when connected for the first time
+socket.on('connect', function() {
+    hanle = ""
+    screen.title = 'ultra chat';
+    screen.append(enterHandle);
+    screen.render();
+});
+
 // handle events
 enter.on('press', function () {
     enterHandle.submit();
@@ -89,14 +97,6 @@ socket.on('failed', function() {
     enterHandle.content = 'That handle already exists. Please choose another handle.'
     screen.render();
 })
-    
-
-// when connected for the first time
-socket.on('connect', function() {
-    screen.title = 'ultra chat';
-    screen.append(enterHandle);
-    screen.render();
-});
 
 // when the server authorizes the client to enter the chat
 socket.on('enterChat', function() {
