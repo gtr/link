@@ -46,11 +46,14 @@ io.on('connection', function (socket){
     
     // on disconnected user
     socket.on('disconnect', function () {
-        handlesArray = handlesArray.filter(function (item) {
-            return item !== handle
-        });
-        console.log('user disconnected', handle)
-        console.log('current users:', handlesArray)
+        if (handle != null) {
+            console.log(handle)
+            handlesArray = handlesArray.filter(function (item) {
+                return item !== handle
+            });
+            console.log('user disconnected', handle)
+            console.log('current users:', handlesArray)
+        }
     });
     
     // on chat connection
