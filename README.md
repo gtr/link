@@ -1,18 +1,23 @@
 # Ultra Chat
 
-:speech_balloon: A command-line chat application written in node.js and socket.io
+:speech_balloon: A terminal-based chat application written in node.js and socket.io
 
 ![ultra-chat](assets/ultra-chat.gif)
 
 ### Installation
-1. Clone the repository
+1. Clone the repository and navigate to the directory
     ```bash
     git clone https://github.com/gerardo-torres/ultra-chat.git
     ```
-2. Navigate to directory
     ```bash
     cd ultra-chat
     ```
+
+2. Install dependencies
+    ```bash
+    npm install
+    ```
+
 3. Start the server
     ```bash
     node server.js
