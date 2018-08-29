@@ -10,7 +10,7 @@ var handlesArray = ["admin"];
 // on connection...
 io.on('connection', function (socket){
     console.log('user connected')
-    
+    handle = ""
     // on submitted handle
     socket.on('submitHandle', function (data) {
         handle = data.handle
@@ -46,14 +46,11 @@ io.on('connection', function (socket){
     
     // on disconnected user
     socket.on('disconnect', function () {
-        if (handle != null) {
-            console.log(handle)
-            handlesArray = handlesArray.filter(function (item) {
-                return item !== handle
-            });
-            console.log('user disconnected', handle)
-            console.log('current users:', handlesArray)
-        }
+        handlesArray = handlesArray.filter(function (item) {
+            return item !== handle
+        });
+        console.log('user disconnected', handle)
+        console.log('current users:', handlesArray)
     });
     
     // on chat connection

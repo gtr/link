@@ -21,7 +21,7 @@ var enterHandle = blessed.form({
     parent: screen,
     width: '90%',
     height: 10,
-    top: 5,
+    top: 2,
     left: 'center',
     keys: true,
     content: 'enter handle',
@@ -71,7 +71,6 @@ var enter = blessed.button({
 
 // when connected for the first time
 socket.on('connect', function() {
-    hanle = ""
     screen.title = 'ultra chat';
     screen.append(enterHandle);
     screen.render();
