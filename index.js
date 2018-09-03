@@ -1,6 +1,7 @@
 //app setup
 var io = require('socket.io-client');
 var blessed = require('blessed');
+var inNameScreen = true;
 
 // import blessed objects from cli directory
 var screen = require('./cli/screen.js');
@@ -99,10 +100,17 @@ socket.on('failed', function() {
 
 // when the server authorizes the client to enter the chat
 socket.on('enterChat', function() {
+    id = socket.io.engine.id
+    inNameScreen = false;
     screen.append(body);
     screen.append(input);
 
-    // Handle submitting data
+    // emit load data
+    socket.emit('loadMessages', {
+        id: id
+    });
+
+    // handle submitting data
     input.on('submit', function(text) {
         input.clearValue();
         socket.emit('chat', {
@@ -111,17 +119,23 @@ socket.on('enterChat', function() {
         })
         input.focus();
     });
+
     screen.render();
     screen.key('enter', function(ch, key) {
         input.focus();
     });
+
     input.focus();
 });
 
 // on chat message
 socket.on('chat', function(data){
-    totalMessage = data.handle + ": " + data.message
-    log(totalMessage);
+    if (inNameScreen) {
+        // should not log message
+    } else {
+        totalMessage = data.handle + ": " + data.message
+        log(totalMessage);
+    };
 });
 
 // on new user

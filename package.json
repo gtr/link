@@ -19,6 +19,7 @@
   "dependencies": {
     "blessed": "^0.1.81",
     "express": "^4.16.3",
+    "mongodb": "^3.1.4",
     "socket.io": "^2.1.1"
   }
 }
