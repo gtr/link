@@ -43,7 +43,7 @@ var enterHandle = blessed.form({
     top: 2,
     left: 'center',
     keys: true,
-    content: 'Enter handle (at least two charcters long)',
+    content: 'Enter handle (at least two characters long)',
     vi: true
 });
 
