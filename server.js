@@ -19,14 +19,14 @@ mongo.connect(url, {useNewUrlParser: true}, function (err, client) {
 
     // create users collection and admin
     let users = db.collection('users');
-    users.remove({}, function () {
+    users.removeMany({}, function () {
         console.log('user collection cleared')
     });
     users.insertOne({handle: 'admin'})
     
     // create messages collection
     let messages = db.collection('messages');
-    messages.remove({}, function () {
+    messages.removeMany({}, function () {
         // messages cleared
     });
     // on websocket connection...
@@ -36,21 +36,25 @@ mongo.connect(url, {useNewUrlParser: true}, function (err, client) {
         // on submitted handle
         socket.on('submitHandle', function (data) {
             var handle = data.handle
-            id = data.id
             
-            users.findOne({handle: handle}, function(err, user) {
-                if (err) {
-                    throw err
-                };
+            if (handle.length > 1) {
+
+                id = data.id
                 
-                if (user) {
-                    console.log('user exists')
-                    io.sockets.connected[id].emit('failed', handle);
-                } else {
-                    users.insertOne({handle: handle});
-                    io.sockets.connected[id].emit('enterChat', handle);
-                }
-            });
+                users.findOne({handle: handle}, function(err, user) {
+                    if (err) {
+                        throw err
+                    };
+                    
+                    if (user) {
+                        console.log('user exists')
+                        io.sockets.connected[id].emit('failed', handle);
+                    } else {
+                        users.insertOne({handle: handle});
+                        io.sockets.connected[id].emit('enterChat', handle);
+                    }
+                });
+            }
         });
         
         // on new user
@@ -83,7 +87,6 @@ mongo.connect(url, {useNewUrlParser: true}, function (err, client) {
         // on request to load previous messages
         socket.on('loadMessages', function (data) {
             var id = data.id
-            console.log('request to load all messages')
 
             // retrieve messages 
             messages.find({}).toArray(function (err, result) {

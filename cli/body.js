@@ -7,12 +7,9 @@ var body = blessed.box({
     width: '100%',
     keys: true,
     mouse: true,
+    tags: true,
     alwaysScroll: true,
     scrollable: true,
-    scrollbar: {
-        ch: ' ',
-        bg: 'red'
-    }
 });
 
 // for use in index.js
