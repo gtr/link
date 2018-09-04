@@ -73,7 +73,6 @@ mongo.connect(url, {useNewUrlParser: true}, function (err, client) {
         
         // on disconnected user
         socket.on('disconnect', function () {
-            console.log('disconnect', handle)
             // deleting user from database collection
             var myquery = { handle: handle };
             users.deleteOne(myquery, function (err, obj) {
