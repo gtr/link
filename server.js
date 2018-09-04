@@ -29,6 +29,7 @@ mongo.connect(url, {useNewUrlParser: true}, function (err, client) {
     messages.removeMany({}, function () {
         // messages cleared
     });
+
     // on websocket connection...
     io.on('connection', function (socket) {
         var handle = ''
@@ -50,7 +51,7 @@ mongo.connect(url, {useNewUrlParser: true}, function (err, client) {
                         console.log('user exists')
                         io.sockets.connected[id].emit('failed', handle);
                     } else {
-                        users.insertOne({handle: handle});
+                        users.insertOne({ handle: handle });
                         io.sockets.connected[id].emit('enterChat', handle);
                     }
                 });
@@ -114,7 +115,7 @@ mongo.connect(url, {useNewUrlParser: true}, function (err, client) {
 
                 // emit the data to clients
                 io.sockets.emit('chat', data);
-        });
+            });
         });
     })
 })

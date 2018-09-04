@@ -2,7 +2,14 @@
 
 :speech_balloon: A terminal-based chat application written in node.js and socket.io
 
-![ultra-chat](assets/ultra-chat.gif)
+<p align="center">
+    <img src="assets/ultra-chat.gif"
+        alt="Ultra Chat">
+</p>
+
+<p align="center">
+    <em>Now with colors!</em>
+</p>
 
 ### Installation
 1. Clone the repository and navigate to the directory
@@ -32,5 +39,10 @@
 
 ### Dependencies
 - socket.io: websocket library
-- express: backend server
 - blessed: frontend CLI
+- mongoDB: database to store messages and users
+- nodejs & express: backend technologies
+
+### Future Plans
+- Multiple chatrooms
+- Username and password
