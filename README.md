@@ -43,6 +43,3 @@
 - mongoDB: database to store messages and users
 - nodejs & express: backend technologies
 
-### Future Plans
-- Multiple chatrooms
-- Username and password
