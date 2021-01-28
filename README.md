@@ -1,23 +1,23 @@
-# Ultra Chat
+# link
 
-:speech_balloon: A terminal-based chat application written in node.js and socket.io
+:speech_balloon: a terminal-based chat application written in node.js and socket.io
 
 <p align="center">
-    <img src="assets/ultra-chat.gif"
-        alt="Ultra Chat">
+    <img src="assets/link.gif"
+        alt="link">
 </p>
 
 <p align="center">
-    <em>Now with colors!</em>
+    <em>now with colors!!</em>
 </p>
 
 ### Installation
 1. Clone the repository and navigate to the directory
     ```bash
-    git clone https://github.com/gerardo-torres/ultra-chat.git
+    git clone https://github.com/gerardo-torres/link-chat.git
     ```
     ```bash
-    cd ultra-chat
+    cd link-chat
     ```
 
 2. Install dependencies
@@ -31,7 +31,7 @@
     ```
 4. On another terminal, navigate to the directory and start the application
     ```bash
-    cd ultra-chat
+    cd link-chat
     ```
     ```bash
     node index.js
