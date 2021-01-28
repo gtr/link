@@ -17,7 +17,7 @@
     git clone https://github.com/gerardo-torres/link-chat.git
     ```
     ```bash
-    cd link-chat
+    cd link
     ```
 
 2. Install dependencies
@@ -31,7 +31,7 @@
     ```
 4. On another terminal, navigate to the directory and start the application
     ```bash
-    cd link-chat
+    cd link
     ```
     ```bash
     node index.js
