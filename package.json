@@ -1,5 +1,5 @@
 {
-  "name": "ultra-chat",
+  "name": "link",
   "version": "1.0.0",
   "description": "A command line chat application written in node.js and socket.io",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gerardo-torres/ultra-chat.git"
+    "url": "git+https://github.com/gerardo-torres/link.git"
   },
   "author": "Gerardo Torres",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gerardo-torres/ultra-chat/issues"
+    "url": "https://github.com/gerardo-torres/link/issues"
   },
-  "homepage": "https://github.com/gerardo-torres/ultra-chat#readme",
+  "homepage": "https://github.com/gerardo-torres/link#readme",
   "dependencies": {
     "blessed": "^0.1.81",
     "express": "^4.16.3",

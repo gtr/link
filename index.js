@@ -90,7 +90,7 @@ var enter = blessed.button({
 
 // when connected for the first time
 socket.on('connect', function() {
-    screen.title = 'ultra chat';
+    screen.title = 'link';
     screen.append(enterHandle);
     screen.render();
 });

@@ -5,7 +5,7 @@ const mongo = require('mongodb').MongoClient;
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 var url = 'mongodb://localhost:27017/';
-var dbName = 'ultra-chat';
+var dbName = 'link';
 
 // connect to mongoDB 
 mongo.connect(url, {useNewUrlParser: true}, function (err, client) {
@@ -13,7 +13,7 @@ mongo.connect(url, {useNewUrlParser: true}, function (err, client) {
         throw err
     };
 
-    // connect to ultra-chat db
+    // connect to link db
     var db = client.db(dbName);
     console.log('connected to:', dbName);
 
